@@ -14,7 +14,7 @@ By adjusting variables like funding rate, words required, hourly rate, and total
 ![image](https://github.com/user-attachments/assets/b85e8950-3f4e-4e5f-8b0c-648c08317b92)
 
 ## Usage
-Visit the hosted page: [Grant Review Cost Visualizer]([https://your-username.github.io/grantreview/](https://dbann.github.io/grantreview/))
+Visit the hosted page: [Grant Review Cost Visualizer](https://dbann.github.io/grantreview/)
 
 ## Contact
 For feedback or inquiries, please contact: david.bann@ucl.ac.uk
