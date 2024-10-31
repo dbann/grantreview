@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Funding Cost Visualizer</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.4;
+            padding: 10px;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-size: 14px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .input-section {
+            flex: 1;
+            min-width: 250px;
+            padding-right: 20px;
+        }
+        .chart-section {
+            flex: 2;
+            min-width: 250px;
+        }
+        .chart-container {
+            width: 300px;
+            height: 150px;
+            margin-bottom: 5px;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        input[type="number"] {
+            width: 60px;
+            margin-left: 10px;
+        }
+        h1 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const ScienceFundingCostVisualizer = () => {
+            const [wordsNeeded, setWordsNeeded] = useState(1000);
+            const [wordsRequested, setWordsRequested] = useState(6000);
+            const [fundingRate, setFundingRate] = useState(15);
+            const [hourlyRate, setHourlyRate] = useState(50);
+            const [totalApplications, setTotalApplications] = useState(3000);
+            const [wordsPerHour, setWordsPerHour] = useState(250);
+
+            const costChartRef = useRef(null);
+            const timeChartRef = useRef(null);
+            const costChartInstance = useRef(null);
+            const timeChartInstance = useRef(null);
+
+            const calculateWaste = () => {
+                const timePerApplication = wordsRequested / wordsPerHour;
+                const totalWastedTime = timePerApplication * totalApplications * (100 - fundingRate) / 100;
+                const totalWastedMoney = totalWastedTime * hourlyRate;
+
+                return {
+                    wastedTime: totalWastedTime.toFixed(2),
+                    wastedMoney: totalWastedMoney.toFixed(2),
+                };
+            };
+
+            const waste = calculateWaste();
+
+            useEffect(() => {
+                if (costChartInstance.current) {
+                    costChartInstance.current.destroy();
+                }
+                if (timeChartInstance.current) {
+                    timeChartInstance.current.destroy();
+                }
+
+                const chartOptions = {
+                    responsive: false,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    }
+                };
+
+                const costCtx = costChartRef.current.getContext('2d');
+                costChartInstance.current = new Chart(costCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Cost'],
+                        datasets: [{
+                            data: [parseFloat(waste.wastedMoney)],
+                            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1,
+                            barPercentage: 0.5
+                        }]
+                    },
+                    options: {
+                        ...chartOptions,
+                        scales: {
+                            ...chartOptions.scales,
+                            y: {
+                                ...chartOptions.scales.y,
+                                title: {
+                                    ...chartOptions.scales.y.title,
+                                    text: '£'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const timeCtx = timeChartRef.current.getContext('2d');
+                timeChartInstance.current = new Chart(timeCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Time'],
+                        datasets: [{
+                            data: [parseFloat(waste.wastedTime)],
+                            backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1,
+                            barPercentage: 0.5
+                        }]
+                    },
+                    options: {
+                        ...chartOptions,
+                        scales: {
+                            ...chartOptions.scales,
+                            y: {
+                                ...chartOptions.scales.y,
+                                title: {
+                                    ...chartOptions.scales.y.title,
+                                    text: 'Hours'
+                                }
+                            }
+                        }
+                    }
+                });
+
+                return () => {
+                    if (costChartInstance.current) {
+                        costChartInstance.current.destroy();
+                    }
+                    if (timeChartInstance.current) {
+                        timeChartInstance.current.destroy();
+                    }
+                };
+            }, [waste]);
+
+            const formatNumber = (number) => {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            };
+
+            return (
+                <div>
+                    <h1>Visualising the cost of funding science via grant applications</h1>
+                    
+                    <div className="container">
+                        <div className="input-section">
+                            <h2>Input Parameters</h2>
+                            <div>
+                                <label>Words needed for review: {wordsNeeded}</label>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="3000"
+                                    value={wordsNeeded}
+                                    onChange={(e) => setWordsNeeded(Number(e.target.value))}
+                                />
+                            </div>
+                            <div>
+                                <label>Words requested by funder: {wordsRequested}</label>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="10000"
+                                    value={wordsRequested}
+                                    onChange={(e) => setWordsRequested(Number(e.target.value))}
+                                />
+                            </div>
+                            <div>
+                                <label>Applications funded (%): {fundingRate}</label>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    value={fundingRate}
+                                    onChange={(e) => setFundingRate(Number(e.target.value))}
+                                />
+                            </div>
+                            <div>
+                                <label>Hourly Rate (£): </label>
+                                <input
+                                    type="number"
+                                    value={hourlyRate}
+                                    onChange={(e) => setHourlyRate(Number(e.target.value))}
+                                    min="1"
+                                />
+                            </div>
+                            <div>
+                                <label>Total Applications: </label>
+                                <input
+                                    type="number"
+                                    value={totalApplications}
+                                    onChange={(e) => setTotalApplications(Number(e.target.value))}
+                                    min="1"
+                                />
+                            </div>
+                            <div>
+                                <label>Estimated time spent to write words (per hour):</label>
+                                <div>
+                                    <input
+                                        type="radio"
+                                        id="slow"
+                                        name="wordsPerHour"
+                                        value="150"
+                                        checked={wordsPerHour === 150}
+                                        onChange={() => setWordsPerHour(150)}
+                                    />
+                                    <label htmlFor="slow">150 words</label>
+                                </div>
+                                <div>
+                                    <input
+                                        type="radio"
+                                        id="medium"
+                                        name="wordsPerHour"
+                                        value="250"
+                                        checked={wordsPerHour === 250}
+                                        onChange={() => setWordsPerHour(250)}
+                                    />
+                                    <label htmlFor="medium">250 words</label>
+                                </div>
+                                <div>
+                                    <input
+                                        type="radio"
+                                        id="fast"
+                                        name="wordsPerHour"
+                                        value="350"
+                                        checked={wordsPerHour === 350}
+                                        onChange={() => setWordsPerHour(350)}
+                                    />
+                                    <label htmlFor="fast">350 words</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="chart-section">
+                            <h2>Cost of writing unfunded proposals</h2>
+                            <div className="chart-container">
+                                <canvas ref={costChartRef} width="300" height="150"></canvas>
+                            </div>
+                            <p>Total Cost (unfunded projects): £{formatNumber(parseFloat(waste.wastedMoney))}</p>
+                            <div className="chart-container">
+                                <canvas ref={timeChartRef} width="300" height="150"></canvas>
+                            </div>
+                            <p>Total Time Spent (unfunded projects): {formatNumber(parseFloat(waste.wastedTime))} hours</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p><strong>Note:</strong> Not included are costs relating to: peer reviewer or panel time, university administrative costs in creating funding applications.</p>
+                    </div>
+                    <div>
+                        <p>Prototype version - <a href="mailto:david.bann@ucl.ac.uk">feedback</a> very welcome.</p>
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<ScienceFundingCostVisualizer />, document.getElementById('root'));
+    </script>
+</body>
+</html>
