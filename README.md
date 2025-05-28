@@ -20,7 +20,7 @@ By adjusting parameters like funding rate, words required, hourly rate, and tota
 - **Real-Time Visual Feedback**: Interactive charts showing total cost and time spent on unsuccessful applications.
 - **Simple Interface**: Easily experiment with different input values and see immediate results.
 
-![image](https://github.com/user-attachments/assets/b85e8950-3f4e-4e5f-8b0c-648c08317b92)
+![image](fig.png)
 
 ## Tags
 `#ScienceFunding #GrantApplications #ResearchEfficiency #FundingSystem #TimeWaste #ResearchWaste #OpenScience #AcademicFunding #GrantReview #FundingOptimization #Epidemiology #ResearchCommunity`
