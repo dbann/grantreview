@@ -12,21 +12,17 @@
             --accent-green: #10b981;
             --accent-orange: #f59e0b;
             --danger-red: #ef4444;
-            
             --bg-primary: #ffffff;
             --bg-secondary: #f8fafc;
             --bg-card: #ffffff;
             --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --bg-chart: #f1f5f9;
-            
             --text-primary: #0f172a;
             --text-secondary: #475569;
             --text-muted: #64748b;
             --text-light: #94a3b8;
-            
             --border-color: #e2e8f0;
             --border-focus: #3b82f6;
-            
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -50,7 +46,7 @@
         .hero-section {
             background: var(--bg-gradient);
             color: white;
-            padding: 1.8rem 1rem;
+            padding: 1.5rem 1rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -75,81 +71,85 @@
         }
 
         .hero-title {
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             animation: fadeInUp 0.8s ease-out;
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             opacity: 0.9;
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
             animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-
-        .hero-stat {
-            text-align: center;
-            background: rgba(255,255,255,0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            display: block;
-        }
-
-        .hero-stat-label {
-            font-size: 0.875rem;
-            opacity: 0.8;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
         }
 
         .main-grid {
             display: grid;
-            gap: 2rem;
+            gap: 1.5rem;
             grid-template-columns: 1fr;
         }
 
         @media (min-width: 1024px) {
             .main-grid {
-                grid-template-columns: 400px 1fr;
+                grid-template-columns: 320px 1fr;
+                grid-template-rows: auto auto auto;
+                max-width: 100%;
+            }
+
+            .control-panel {
+                grid-column: 1 / 2;
+                grid-row: 1 / 4;
+                position: sticky;
+                top: 1rem;
+                height: fit-content;
+            }
+
+            .results-cards {
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+            }
+
+            .chart-container {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+            }
+
+            .comparison-section {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .notes-section {
+                grid-column: 1 / 3;
+                grid-row: 4 / 5;
             }
         }
 
         .control-panel {
             background: var(--bg-card);
             border-radius: 1.5rem;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
             height: fit-content;
-            position: sticky;
-            top: 2rem;
         }
 
         .panel-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
             display: flex;
             align-items: center;
@@ -158,42 +158,43 @@
 
         .panel-title::before {
             content: '⚙️';
-            font-size: 1.25rem;
+            font-size: 1.1rem;
         }
 
         .input-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .input-label {
             display: flex;
-            justify-content: space-between; /* Corrected from "between" */
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
             font-weight: 600;
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .input-value {
             color: var(--primary-blue);
             font-weight: 700;
             background: rgba(0, 102, 255, 0.1);
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
         }
 
         .slider-container {
             position: relative;
-            margin: 1rem 0;
+            margin: 0.8rem 0;
         }
 
         input[type="range"] {
             width: 100%;
-            height: 8px;
+            height: 6px;
             border-radius: 5px;
             background: #e2e8f0;
-            outline: none;
+            outline:ILDn none;
             -webkit-appearance: none;
             appearance: none;
             cursor: pointer;
@@ -201,19 +202,19 @@
         }
 
         input[type="range"]:hover {
-            box-shadow: 0 0 0 8px rgba(0, 102, 255, 0.1);
+            box-shadow: 0 0 0 6px rgba(0, 102, 255, 0.1);
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: var(--primary-blue);
             cursor: pointer;
             box-shadow: var(--shadow-md);
-            border: 3px solid white;
+            border: 2px solid white;
             transition: all 0.2s ease;
         }
 
@@ -223,21 +224,21 @@
         }
 
         input[type="range"]::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background: var(--primary-blue);
             cursor: pointer;
-            border: 3px solid white;
+            border: 2px solid white;
             box-shadow: var(--shadow-md);
         }
 
         .number-input {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.8rem;
             border: 2px solid var(--border-color);
-            border-radius: 0.75rem;
-            font-size: 1rem;
+            border-radius: 0.6rem;
+            font-size: 0.9rem;
             font-weight: 600;
             background: var(--bg-card);
             color: var(--text-primary);
@@ -253,8 +254,8 @@
         .radio-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-            margin-top: 0.75rem;
+            gap: 0.6rem;
+            margin-top: 0.6rem;
         }
 
         .radio-option {
@@ -268,14 +269,15 @@
 
         .radio-option label {
             display: block;
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.8rem;
             border: 2px solid var(--border-color);
-            border-radius: 0.75rem;
+            border-radius: 0.6rem;
             text-align: center;
             cursor: pointer;
             transition: all 0.2s ease;
             font-weight: 600;
             background: white;
+            font-size: 0.85rem;
         }
 
         .radio-option input[type="radio"]:checked + label {
@@ -291,12 +293,12 @@
 
         .currency-toggle {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.8rem;
             background: var(--primary-blue);
             color: white;
             border: none;
-            border-radius: 0.75rem;
-            font-size: 1rem;
+            border-radius: 0.6rem;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -308,26 +310,20 @@
             box-shadow: var(--shadow-md);
         }
 
-        .results-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
         .results-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
         }
 
         .result-card {
             background: var(--bg-card);
-            border-radius: 1.5rem;
-            padding: 2rem;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
             text-align: center;
-            transition: all 0.3s ease;
+ほぼ            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -338,26 +334,26 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary-blue), var(--secondary-purple));
         }
 
         .result-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-xl);
         }
 
         .result-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
             display: block;
         }
 
         .result-value {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--primary-blue);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             display: block;
             animation: countUp 0.8s ease-out;
         }
@@ -365,26 +361,27 @@
         .result-label {
             color: var(--text-secondary);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .chart-container {
             background: var(--bg-card);
-            border-radius: 1.5rem;
-            padding: 2rem;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
+            margin-top: 1rem;
         }
 
         .chart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .chart-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-primary);
             margin: 0;
@@ -392,15 +389,15 @@
 
         .chart-subtitle {
             color: var(--text-muted);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
         }
 
         .chart-svg-container {
             width: 100%;
-            height: 400px;
+            height: 350px;
             background: var(--bg-chart);
-            border-radius: 1rem;
+            border-radius: 0.8rem;
             overflow: hidden;
             position: relative;
             border: 1px solid var(--border-color);
@@ -410,35 +407,88 @@
             position: absolute;
             background: rgba(0, 0, 0, 0.9);
             color: white;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
+            padding: 0.6rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
             font-weight: 600;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.2s ease, transform 0.2s ease; /* Added transform transition */
+            transition: opacity 0.2s ease, transform 0.2s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
-            transform: translate(-50%, -100%); /* Center tooltip above cursor */
+            transform: translate(-50%, -100%);
+        }
+
+        .comparison-section {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .comparison-box {
+            background: var(--bg-card);
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .comparison-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-orange));
+        }
+
+        .comparison-box h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .comparison-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            margin-bottom: 0.4rem;
+        }
+
+        .comparison-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
         }
 
         .notes-section {
             background: var(--bg-card);
-            border-radius: 1.5rem;
-            padding: 2rem;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
             border-left: 4px solid var(--accent-orange);
+            margin-top: 1.5rem;
         }
 
         .notes-title {
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .notes-title::before {
@@ -447,7 +497,8 @@
 
         .notes-text {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
         }
 
         .contact-link {
@@ -460,6 +511,63 @@
         .contact-link:hover {
             color: var(--primary-blue-dark);
             text-decoration: underline;
+        }
+
+        .chart-bar {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chart-bar:hover {
+            opacity: 0.8;
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 1023px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .control-panel, .results-cards, .chart-container, .comparison-section, .notes-section {
+                grid-column: auto;
+                grid-row: auto;
+            }
+
+            .comparison-section {
+                grid-template-columns: 1fr;
+                margin-top: 1.5rem;
+            }
+
+            .chart-container {
+                margin-top: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .control-panel {
+                position: static;
+                margin-bottom: 1.5rem;
+            }
+
+            .results-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-section {
+                grid-template-columns: 1fr;
+            }
         }
 
         @keyframes fadeInUp {
@@ -483,95 +591,30 @@
                 opacity: 1;
             }
         }
-
-        .chart-bar {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .chart-bar:hover {
-            opacity: 0.8;
-            filter: brightness(1.1);
-        }
-
-        .loading-shimmer {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 2rem 1rem;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
-            
-            .control-panel {
-                position: static;
-                margin-bottom: 2rem;
-            }
-            
-            .results-cards {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <div class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title">Science Funding Cost Calculator</h1>
             <p class="hero-subtitle">
                 Explore the hidden costs of the grant application process. How much time and money is spent on unfunded proposals?
             </p>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="hero-stat-number" id="heroWastedMoney">£0</span>
-                    <span class="hero-stat-label">Wasted on unfunded proposals</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number" id="heroWastedTime">0</span>
-                    <span class="hero-stat-label">Hours lost</span>
-                </div>
-            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="main-grid">
-            <!-- Control Panel -->
             <div class="control-panel">
                 <h2 class="panel-title">Parameters</h2>
 
                 <div class="input-group">
                     <div class="input-label">
                         <span>Words requested by funder</span>
-                        <span class="input-value" id="wordsRequestedValue">6000</span>
+                        <span class="input-value" id="wordsRequestedValue">20000</span>
                     </div>
                     <div class="slider-container">
-                        <input type="range" id="wordsRequested" min="0" max="20000" value="6000" step="100">
+                        <input type="range" id="wordsRequested" min="0" max="20000" value="20000" step="100">
                     </div>
                 </div>
 
@@ -582,6 +625,16 @@
                     </div>
                     <div class="slider-container">
                         <input type="range" id="fundingRate" min="0" max="100" value="15" step="1">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-label">
+                        <span>2nd Stage Selection Rate (%)</span>
+                        <span class="input-value" id="secondStageSelectionRateValue">30%</span>
+                    </div>
+                    <div class="slider-container">
+                        <input type="range" id="secondStageSelectionRate" min="0" max="100" value="30" step="1">
                     </div>
                 </div>
 
@@ -618,65 +671,77 @@
                 <button id="toggleCurrency" class="currency-toggle">Currency: £</button>
             </div>
 
-            <!-- Results Section -->
-            <div class="results-section">
-                <div class="results-cards">
-                    <div class="result-card">
-                        <span class="result-icon">💰</span>
-                        <span id="totalCost" class="result-value">£0</span>
-                        <span class="result-label">Total Wasted Cost</span>
-                    </div>
-                    <div class="result-card">
-                        <span class="result-icon">⏰</span>
-                        <span id="totalTime" class="result-value">0</span>
-                        <span class="result-label">Hours Wasted</span>
-                    </div>
-                    <div class="result-card">
-                        <span class="result-icon">📊</span>
-                        <span id="wastePercentage" class="result-value">85%</span>
-                        <span class="result-label">Effort Wasted</span>
-                    </div>
+            <div class="results-cards">
+                <div class="result-card">
+                    <span class="result-icon">💰</span>
+                    <span id="totalCost" class="result-value">£0</span>
+                    <span class="result-label">Total Wasted Cost</span>
                 </div>
-
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <div>
-                            <h3 class="chart-title">Cost Breakdown Analysis</h3>
-                            <p class="chart-subtitle">Visual representation of time and money spent on unfunded proposals</p>
-                        </div>
-                    </div>
-                    <div id="chartContainer" class="chart-svg-container">
-                        <!-- SVG chart will be inserted here -->
-                    </div>
+                <div class="result-card">
+                    <span class="result-icon">⏰</span>
+                    <span id="totalTime" class="result-value">0</span>
+                    <span class="result-label">Hours Wasted</span>
+                </div>
+                <div class="result-card">
+                    <span class="result-icon">📊</span>
+                    <span id="efficiencyRate" class="result-value">15%</span>
+                    <span class="result-label">Success Rate</span>
                 </div>
             </div>
-        </div>
 
-        <div class="notes-section">
-            <h3 class="notes-title">Important Notes</h3>
-            <p class="notes-text">
-                <strong>Limitations:</strong> This analysis does not include costs related to peer reviewer time, panel evaluation, 
-                or university administrative overhead in preparing funding applications. The actual total cost of the funding system is likely higher.
-            </p>
-            <p class="notes-text">
-                This is a prototype version. <a href="mailto:david.bann@ucl.ac.uk" class="contact-link">Feedback is very welcome</a> 
-                to help improve the accuracy and usefulness of this tool.
-            </p>
-            <p class="notes-text"> 
-                View the source code and contribute on <a href="https://github.com/dbann/grantreview" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>.
-            </p>
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Cost Breakdown and Comparison with 2-Stage System</h3>
+                        <p class="chart-subtitle">Comparing single-stage vs. two-stage review processes</p>
+                    </div>
+                </div>
+                <div id="chartContainer" class="chart-svg-container"></div>
+            </div>
+
+            <div class="comparison-section">
+                <div class="comparison-box">
+                    <h4>Potential Cost Savings</h4>
+                    <p class="comparison-label" id="comparisonDescription">With 2-stage system (1000 words first stage, 50% proceeding):</p>
+                    <span id="twoStageSavings" class="comparison-value">£0</span>
+                    <span class="comparison-label">Cost Reduction</span>
+                </div>
+                <div class="comparison-box">
+                    <h4>Potential Time Savings</h4>
+                    <p class="comparison-label">Reduced application writing burden:</p>
+                    <span id="twoStageTimeSavings" class="comparison-value" style="color: var(--secondary-purple);">0h</span>
+                    <span class="comparison-label">Hours Saved</span>
+                </div>
+            </div>
+
+            <div class="notes-section">
+                <h3 class="notes-title">Important Notes</h3>
+                <p class="notes-text">
+                    <strong>Limitations:</strong> This analysis does not include costs related to peer reviewer time, panel evaluation, 
+                    or university administrative overhead in preparing funding applications. The actual total cost of the funding system is likely higher.
+                </p>
+                <p class="notes-text">
+                    This is a prototype version. <a href="mailto:david.bann@ucl.ac.uk" class="contact-link">Feedback is very welcome</a> 
+                    to help improve the accuracy and usefulness of this tool.
+                </p>
+                <p class="notes-text"> 
+                    View the source code and contribute on <a href="https://github.com/dbann/grantreview" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>.
+                </p>
+            </div>
         </div>
+    </div>
 
     <div id="tooltip" class="tooltip"></div>
 
     <script>
         // State management
         let state = {
-            wordsRequested: 6000,
+            wordsRequested: 20000,
             fundingRate: 15,
             hourlyRate: 50,
             totalApplications: 3000,
             wordsPerHour: 250,
+            secondStageSelectionRate: 30,
             currency: '£'
         };
 
@@ -693,11 +758,14 @@
             currencySymbol: document.getElementById('currencySymbol'),
             totalCostElement: document.getElementById('totalCost'),
             totalTimeElement: document.getElementById('totalTime'),
-            wastePercentageElement: document.getElementById('wastePercentage'),
-            heroWastedMoney: document.getElementById('heroWastedMoney'),
-            heroWastedTime: document.getElementById('heroWastedTime'),
+            efficiencyRateElement: document.getElementById('efficiencyRate'),
             chartContainer: document.getElementById('chartContainer'),
-            tooltip: document.getElementById('tooltip')
+            tooltip: document.getElementById('tooltip'),
+            twoStageSavings: document.getElementById('twoStageSavings'),
+            twoStageTimeSavings: document.getElementById('twoStageTimeSavings'),
+            secondStageSelectionRateInput: document.getElementById('secondStageSelectionRate'),
+            secondStageSelectionRateValue: document.getElementById('secondStageSelectionRateValue'),
+            comparisonDescription: document.getElementById('comparisonDescription')
         };
 
         // Utility functions
@@ -706,14 +774,37 @@
             const unfundedApplications = state.totalApplications * (100 - state.fundingRate) / 100;
             const totalWastedTime = timePerApplication * unfundedApplications;
             const totalWastedMoney = totalWastedTime * state.hourlyRate;
-            const wastePercentage = 100 - state.fundingRate;
 
             return {
                 wastedTime: totalWastedTime,
                 wastedMoney: totalWastedMoney,
-                wastePercentage: wastePercentage,
                 unfundedApplications: unfundedApplications,
                 timePerApplication: timePerApplication
+            };
+        }
+
+        function calculateTwoStageWaste(firstStageWords = 1000) {
+            const selectionRate = state.secondStageSelectionRate / 100;
+            const fundingRate = state.fundingRate / 100;
+
+            // Time for first stage (all applications)
+            const timePerStage1 = firstStageWords / state.wordsPerHour;
+            const firstStageTime = state.totalApplications * timePerStage1;
+
+            // Time for second stage (only selected applications)
+            const secondStageApplications = state.totalApplications * selectionRate;
+            const secondStageWords = state.wordsRequested - firstStageWords;
+            const timePerStage2 = secondStageWords / state.wordsPerHour;
+            const secondStageTime = secondStageApplications * timePerStage2;
+
+            // Wasted time: all first stage + unfunded second stage
+            const unfundedSecondStageApplications = Math.max(0, secondStageApplications * (1 - fundingRate / selectionRate));
+            const totalTwoStageWastedTime = firstStageTime + (unfundedSecondStageApplications * timePerStage2);
+            const totalTwoStageWastedMoney = totalTwoStageWastedTime * state.hourlyRate;
+
+            return {
+                wastedTime: totalTwoStageWastedTime,
+                wastedMoney: totalTwoStageWastedMoney
             };
         }
 
@@ -731,102 +822,142 @@
         }
 
         function animateValue(element, endValue, duration = 800, formatter = formatNumber) {
-            const startValue = parseFloat(element.textContent.replace(/[^\d.-]/g, '')) || 0; // Get current numeric value
+            const startValue = parseFloat(element.textContent.replace(/[^\d.-]/g, '')) || 0;
             const startTime = performance.now();
-            
+
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                
                 const easeOut = 1 - Math.pow(1 - progress, 3);
                 const currentValue = startValue + (endValue - startValue) * easeOut;
-                
+
                 element.textContent = formatter(currentValue);
-                
+
                 if (progress < 1) {
                     requestAnimationFrame(update);
                 } else {
-                    element.textContent = formatter(endValue); // Ensure final value is exact
+                    element.textContent = formatter(endValue);
                 }
             }
-            
+
             requestAnimationFrame(update);
         }
 
         function updateUI() {
             const waste = calculateWaste();
-            
+            const twoStageWaste = calculateTwoStageWaste();
+
             elements.wordsRequestedValue.textContent = formatNumber(state.wordsRequested);
             elements.fundingRateValue.textContent = state.fundingRate + '%';
+            elements.secondStageSelectionRateValue.textContent = state.secondStageSelectionRate + '%';
+            elements.comparisonDescription.textContent = `With 2-stage system (1000 words first stage, ${state.secondStageSelectionRate}% proceeding):`;
             elements.currencySymbol.textContent = state.currency;
             elements.toggleCurrencyButton.textContent = `Currency: ${state.currency}`;
-            
-            animateValue(elements.totalCostElement, waste.wastedMoney, 800, (val) => 
+
+            animateValue(elements.totalCostElement, waste.wastedMoney, 800, (val) =>
                 `${state.currency}${formatNumber(val)}`);
-            animateValue(elements.totalTimeElement, waste.wastedTime, 800, (val) => 
+            animateValue(elements.totalTimeElement, waste.wastedTime, 800, (val) =>
                 formatNumber(val));
-            animateValue(elements.wastePercentageElement, waste.wastePercentage, 800, (val) => 
+            animateValue(elements.efficiencyRateElement, state.fundingRate, 800, (val) =>
                 Math.round(val) + '%');
-            
-            animateValue(elements.heroWastedMoney, waste.wastedMoney, 800, (val) =>
-                `${state.currency}${formatLargeNumber(val)}`);
-            animateValue(elements.heroWastedTime, waste.wastedTime, 800, formatLargeNumber);
-            
-            renderChart(waste);
+
+            const potentialCostSavings = waste.wastedMoney - twoStageWaste.wastedMoney;
+            const potentialTimeSavings = waste.wastedTime - twoStageWaste.wastedTime;
+
+            animateValue(elements.twoStageSavings, potentialCostSavings, 800, (val) =>
+                `${state.currency}${formatNumber(val)}`);
+            animateValue(elements.twoStageTimeSavings, potentialTimeSavings, 800, (val) =>
+                `${formatNumber(val)}h`);
+
+            renderChart(waste, twoStageWaste);
         }
 
-        function renderChart(waste) {
+        function renderChart(waste, twoStageWaste) {
             const container = elements.chartContainer;
             const width = container.clientWidth;
             const height = container.clientHeight;
-            const padding = { top: 60, right: 80, bottom: 60, left: 80 };
-            
+            const padding = { top: 40, right: 80, bottom: 60, left: 80 };
+
             container.innerHTML = '';
-            
+
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('width', '100%');
             svg.setAttribute('height', '100%');
             svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
             container.appendChild(svg);
-            
+
             const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-            
+
             const costGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
             costGradient.setAttribute('id', 'costGradient');
-            costGradient.setAttribute('x1', '0%'); costGradient.setAttribute('y1', '0%');
-            costGradient.setAttribute('x2', '0%'); costGradient.setAttribute('y2', '100%');
+            costGradient.setAttribute('x1', '0%');
+            costGradient.setAttribute('y1', '0%');
+            costGradient.setAttribute('x2', '0%');
+            costGradient.setAttribute('y2', '100%');
             costGradient.innerHTML = `
-                <stop offset="0%" style="stop-color:var(--primary-blue);stop-opacity:1" />
-                <stop offset="100%" style="stop-color:var(--primary-blue-dark);stop-opacity:1" />
+                <stop offset="0%" style="stop-color:var(--primary-blue-dark);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:var(--primary-blue);stop-opacity:1" />
             `;
             defs.appendChild(costGradient);
-            
+
             const timeGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
             timeGradient.setAttribute('id', 'timeGradient');
-            timeGradient.setAttribute('x1', '0%'); timeGradient.setAttribute('y1', '0%');
-            timeGradient.setAttribute('x2', '0%'); timeGradient.setAttribute('y2', '100%');
+            timeGradient.setAttribute('x1', '0%');
+            timeGradient.setAttribute('y1', '0%');
+            timeGradient.setAttribute('x2', '0%');
+            timeGradient.setAttribute('y2', '100%');
             timeGradient.innerHTML = `
-                <stop offset="0%" style="stop-color:var(--secondary-purple);stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:1" /> <!-- Darker purple for gradient end -->
+                <stop offset="0%" style="stop-color:#6d28d9;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:var(--secondary-purple);stop-opacity:1" />
             `;
             defs.appendChild(timeGradient);
+
+            const twoStageCostGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+            twoStageCostGradient.setAttribute('id', 'twoStageCostGradient');
+            twoStageCostGradient.setAttribute('x1', '0%');
+            twoStageCostGradient.setAttribute('y1', '0%');
+            twoStageCostGradient.setAttribute('x2', '0%');
+            twoStageCostGradient.setAttribute('y2', '100%');
+            twoStageCostGradient.innerHTML = `
+                <stop offset="0%" style="stop-color:#047857;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:var(--accent-green);stop-opacity:1" />
+            `;
+            defs.appendChild(twoStageCostGradient);
+
+            const twoStageTimeGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+            twoStageTimeGradient.setAttribute('id', 'twoStageTimeGradient');
+            twoStageTimeGradient.setAttribute('x1', '0%');
+            twoStageTimeGradient.setAttribute('y1', '0%');
+            twoStageTimeGradient.setAttribute('x2', '0%');
+            twoStageTimeGradient.setAttribute('y2', '100%');
+            twoStageTimeGradient.innerHTML = `
+                <stop offset="0%" style="stop-color:#c2410c;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:var(--accent-orange);stop-opacity:1" />
+            `;
+            defs.appendChild(twoStageTimeGradient);
+
             svg.appendChild(defs);
-            
+
             const chartWidth = width - padding.left - padding.right;
             const chartHeight = height - padding.top - padding.bottom;
-            
-            const maxCost = Math.max(waste.wastedMoney * 1.1, 1); // Ensure max is not 0
-            const maxTime = Math.max(waste.wastedTime * 1.1, 1); // Ensure max is not 0
-            
-            const barWidth = Math.min(80, chartWidth / 5);
-            const barSpacing = Math.min(60, chartWidth / 6);
-            const centerX = width / 2;
-            
+
+            const maxCost = Math.max(waste.wastedMoney, twoStageWaste.wastedMoney, 1) * 1.1;
+            const maxTime = Math.max(waste.wastedTime, twoStageWaste.wastedTime, 1) * 1.1;
+
+            const barWidth = Math.min(50, chartWidth / 8);
+            const groupSpacing = barWidth * 1.5;
+            const barPadding = 10;
+            const totalGroupWidth = (barWidth * 2) + barPadding;
+            const startX = padding.left + (chartWidth - (totalGroupWidth * 2 + groupSpacing)) / 2;
+
+            // Y-axis labels and grid lines
             for (let i = 0; i <= 5; i++) {
                 const y = padding.top + (i / 5) * chartHeight;
                 const gridLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                gridLine.setAttribute('x1', padding.left); gridLine.setAttribute('y1', y);
-                gridLine.setAttribute('x2', width - padding.right); gridLine.setAttribute('y2', y);
+                gridLine.setAttribute('x1', padding.left);
+                gridLine.setAttribute('y1', y);
+                gridLine.setAttribute('x2', width - padding.right);
+                gridLine.setAttribute('y2', y);
                 gridLine.setAttribute('stroke', 'var(--border-color)');
                 gridLine.setAttribute('stroke-width', '1');
                 gridLine.setAttribute('stroke-dasharray', '3,3');
@@ -834,7 +965,8 @@
 
                 const costVal = maxCost * (1 - i / 5);
                 const costLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                costLabel.setAttribute('x', padding.left - 15); costLabel.setAttribute('y', y + 4);
+                costLabel.setAttribute('x', padding.left - 15);
+                costLabel.setAttribute('y', y + 4);
                 costLabel.setAttribute('text-anchor', 'end');
                 costLabel.setAttribute('fill', 'var(--text-muted)');
                 costLabel.setAttribute('font-size', '12');
@@ -844,7 +976,8 @@
 
                 const timeVal = maxTime * (1 - i / 5);
                 const timeLabelText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                timeLabelText.setAttribute('x', width - padding.right + 15); timeLabelText.setAttribute('y', y + 4);
+                timeLabelText.setAttribute('x', width - padding.right + 15);
+                timeLabelText.setAttribute('y', y + 4);
                 timeLabelText.setAttribute('text-anchor', 'start');
                 timeLabelText.setAttribute('fill', 'var(--text-muted)');
                 timeLabelText.setAttribute('font-size', '12');
@@ -852,9 +985,11 @@
                 timeLabelText.textContent = `${formatLargeNumber(timeVal)}h`;
                 svg.appendChild(timeLabelText);
             }
-            
+
+            // Y-axis titles
             const costTitle = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            costTitle.setAttribute('x', 25); costTitle.setAttribute('y', height / 2);
+            costTitle.setAttribute('x', 25);
+            costTitle.setAttribute('y', height / 2);
             costTitle.setAttribute('text-anchor', 'middle');
             costTitle.setAttribute('fill', 'var(--text-secondary)');
             costTitle.setAttribute('font-size', '14');
@@ -862,9 +997,10 @@
             costTitle.setAttribute('transform', `rotate(-90, 25, ${height / 2})`);
             costTitle.textContent = `Total Cost (${state.currency})`;
             svg.appendChild(costTitle);
-            
+
             const timeTitle = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            timeTitle.setAttribute('x', width - 25); timeTitle.setAttribute('y', height / 2);
+            timeTitle.setAttribute('x', width - 25);
+            timeTitle.setAttribute('y', height / 2);
             timeTitle.setAttribute('text-anchor', 'middle');
             timeTitle.setAttribute('fill', 'var(--text-secondary)');
             timeTitle.setAttribute('font-size', '14');
@@ -872,35 +1008,30 @@
             timeTitle.setAttribute('transform', `rotate(90, ${width - 25}, ${height / 2})`);
             timeTitle.textContent = 'Total Time (Hours)';
             svg.appendChild(timeTitle);
-            
-            const costBarX = centerX - barWidth - barSpacing / 2;
-            const timeBarX = centerX + barSpacing / 2;
-            
-            const costBarHeight = Math.max(5, (waste.wastedMoney / maxCost) * chartHeight);
-            const timeBarHeight = Math.max(5, (waste.wastedTime / maxTime) * chartHeight);
-            
-            function createBar(x, barH, fill, dataValue, unit, label, details) {
+
+            // Bar creation function
+            function createBar(x, dataValue, maxData, yAxisHeight, fill, label, details, unit, colorClass) {
+                const barH = Math.max(5, (dataValue / maxData) * yAxisHeight);
                 const bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                 bar.setAttribute('x', x);
-                bar.setAttribute('y', height - padding.bottom - barH);
+                bar.setAttribute('y', padding.top + yAxisHeight - barH);
                 bar.setAttribute('width', barWidth);
                 bar.setAttribute('height', barH);
                 bar.setAttribute('fill', fill);
-                bar.setAttribute('rx', '8'); bar.setAttribute('ry', '8');
+                bar.setAttribute('rx', '5');
+                bar.setAttribute('ry', '5');
                 bar.setAttribute('class', 'chart-bar');
-                
+
                 bar.addEventListener('mousemove', (e) => {
                     elements.tooltip.style.opacity = '1';
                     elements.tooltip.innerHTML = `
                         <div style="font-weight: 700; margin-bottom: 4px;">${label}</div>
                         <div>${unit === state.currency ? unit : ''}${formatNumber(dataValue)}${unit !== state.currency ? unit : ''}</div>
-                        <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 4px;">${details}</div>
-                    `;
-                    // Position tooltip relative to mouse cursor
+                        <div style="font-size: 0.75rem; opacity: 0.8; margin-top: 4px;">${details}</div>`;
                     elements.tooltip.style.left = `${e.clientX + 15}px`;
                     elements.tooltip.style.top = `${e.clientY - 15}px`;
                 });
-                
+
                 bar.addEventListener('mouseleave', () => {
                     elements.tooltip.style.opacity = '0';
                 });
@@ -908,74 +1039,77 @@
 
                 const valueLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                 valueLabel.setAttribute('x', x + barWidth / 2);
-                valueLabel.setAttribute('y', height - padding.bottom - barH - 10);
+                valueLabel.setAttribute('y', padding.top + yAxisHeight - barH - 8);
                 valueLabel.setAttribute('text-anchor', 'middle');
-                valueLabel.setAttribute('fill', fill.includes('cost') ? 'var(--primary-blue)' : 'var(--secondary-purple)');
+                valueLabel.setAttribute('fill', colorClass);
                 valueLabel.setAttribute('font-size', '12');
                 valueLabel.setAttribute('font-weight', '700');
                 valueLabel.textContent = `${unit === state.currency ? unit : ''}${formatLargeNumber(dataValue)}${unit !== state.currency ? unit : ''}`;
                 svg.appendChild(valueLabel);
             }
 
-            createBar(costBarX, costBarHeight, 'url(#costGradient)', waste.wastedMoney, state.currency, '💰 Total Cost', 
-                `${formatNumber(waste.unfundedApplications)} unfunded applications`);
-            createBar(timeBarX, timeBarHeight, 'url(#timeGradient)', waste.wastedTime, 'h', '⏰ Total Time',
-                `${waste.timePerApplication.toFixed(1)} hours per application`);
+            // Draw Bars
+            const currentGroupX = startX;
+            createBar(currentGroupX, waste.wastedMoney, maxCost, chartHeight, 'url(#costGradient)', '💰 Single-Stage Cost', `${formatNumber(waste.unfundedApplications)} unfunded apps`, state.currency, 'var(--primary-blue)');
+            createBar(currentGroupX + barWidth + barPadding, waste.wastedTime, maxTime, chartHeight, 'url(#timeGradient)', '⏰ Single-Stage Time', `${waste.timePerApplication.toFixed(1)} hrs/app`, 'h', 'var(--secondary-purple)');
 
-            const costXLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            costXLabel.setAttribute('x', costBarX + barWidth / 2);
-            costXLabel.setAttribute('y', height - padding.bottom + 25);
-            costXLabel.setAttribute('text-anchor', 'middle');
-            costXLabel.setAttribute('fill', 'var(--text-secondary)');
-            costXLabel.setAttribute('font-size', '14');
-            costXLabel.setAttribute('font-weight', '600');
-            costXLabel.textContent = 'Total Cost';
-            svg.appendChild(costXLabel);
-            
-            const timeXLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            timeXLabel.setAttribute('x', timeBarX + barWidth / 2);
-            timeXLabel.setAttribute('y', height - padding.bottom + 25);
-            timeXLabel.setAttribute('text-anchor', 'middle');
-            timeXLabel.setAttribute('fill', 'var(--text-secondary)');
-            timeXLabel.setAttribute('font-size', '14');
-            timeXLabel.setAttribute('font-weight', '600');
-            timeXLabel.textContent = 'Total Time';
-            svg.appendChild(timeXLabel);
+            const twoStageGroupX = currentGroupX + totalGroupWidth + groupSpacing;
+            createBar(twoStageGroupX, twoStageWaste.wastedMoney, maxCost, chartHeight, 'url(#twoStageCostGradient)', '💰 Two-Stage Cost', `Efficiently filters apps`, state.currency, 'var(--accent-green)');
+            createBar(twoStageGroupX + barWidth + barPadding, twoStageWaste.wastedTime, maxTime, chartHeight, 'url(#twoStageTimeGradient)', '⏰ Two-Stage Time', `Saves time on rejected apps`, 'h', 'var(--accent-orange)');
+
+            // Group Labels
+            function createGroupLabel(x, text) {
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', x);
+                label.setAttribute('y', height - padding.bottom + 25);
+                label.setAttribute('text-anchor', 'middle');
+                label.setAttribute('fill', 'var(--text-secondary)');
+                label.setAttribute('font-weight', '600');
+                label.setAttribute('font-size', '14');
+                label.textContent = text;
+                svg.appendChild(label);
+            }
+            createGroupLabel(currentGroupX + totalGroupWidth / 2, 'Single-Stage');
+            createGroupLabel(twoStageGroupX + totalGroupWidth / 2, 'Two-Stage');
         }
 
         // Event listeners
         elements.wordsRequestedInput.addEventListener('input', (e) => {
-            state.wordsRequested = parseInt(e.target.value);
+            state.wordsRequested = parseInt(e.target.value) || 0;
             updateUI();
         });
 
         elements.fundingRateInput.addEventListener('input', (e) => {
-            state.fundingRate = parseInt(e.target.value);
+            state.fundingRate = parseInt(e.target.value) || 0;
             updateUI();
         });
 
-        elements.hourlyRateInput.addEventListener('input', (e) => { // Changed to 'input' for real-time updates
+        elements.secondStageSelectionRateInput.addEventListener('input', (e) => {
+            state.secondStageSelectionRate = parseInt(e.target.value) || 0;
+            updateUI();
+        });
+
+        elements.hourlyRateInput.addEventListener('input', (e) => {
             const value = parseInt(e.target.value);
-            if (!isNaN(value) && value >= 0) { // Allow 0
+            if (!isNaN(value) && value >= 0) {
                 state.hourlyRate = value;
                 updateUI();
-            } else if (e.target.value === '') { // Handle empty input
+            } else if (e.target.value === '') {
                 state.hourlyRate = 0;
                 updateUI();
             }
         });
 
-        elements.totalApplicationsInput.addEventListener('input', (e) => { // Changed to 'input'
+        elements.totalApplicationsInput.addEventListener('input', (e) => {
             const value = parseInt(e.target.value);
-            if (!isNaN(value) && value >= 0) { // Allow 0
+            if (!isNaN(value) && value >= 0) {
                 state.totalApplications = value;
                 updateUI();
-            } else if (e.target.value === '') { // Handle empty input
+            } else if (e.target.value === '') {
                 state.totalApplications = 0;
                 updateUI();
             }
         });
-
 
         for (const radio of elements.wordsPerHourRadios) {
             radio.addEventListener('change', (e) => {
@@ -995,8 +1129,8 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                updateUI(); // updateUI calls renderChart
-            }, 150); // Debounce resize event
+                updateUI();
+            }, 150);
         });
 
         // Initialize the application
