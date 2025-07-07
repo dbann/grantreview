@@ -2,7 +2,7 @@
 
 ## Usage
 
-Visit the hosted page: [Grant Review Cost Visualizer](https://dbann.github.io/grantreview/)
+**▶️ [Live demo](https://dbann.github.io/grantreview/)**
 
 **Motivation:**
 Is the current academic funding system optimal? The process of preparing, reviewing, and managing grant applications requires significant resources, yet only a small percentage of projects receive funding. How much time and money are wasted on unsuccessful applications? Could the process be more efficient, reducing the cost to both researchers and funders?
